@@ -13,7 +13,6 @@ birthday = os.environ['BIRTHDAY']
 
 app_id = os.environ["APP_ID"]
 app_secret = os.environ["APP_SECRET"]
-
 user_id = os.environ["USER_ID"]
 template_id = os.environ["TEMPLATE_ID"]
 
@@ -30,6 +29,7 @@ def get_count():
 
 def get_birthday():
   next = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")
+  next = datetime.strptime("2023-08-31", "%Y-%m-%d")
   if next < datetime.now():
     next = next.replace(year=next.year + 1)
   return (next - today).days
