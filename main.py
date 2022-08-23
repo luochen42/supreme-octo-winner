@@ -58,6 +58,7 @@ def get_best(city):
     rep = re.json()
     tem_day = rep.get('tem_day')
     return  tem_day
+  
 def get_day
     return datetime.now()
 
