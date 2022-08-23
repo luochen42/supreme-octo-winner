@@ -60,7 +60,7 @@ def get_best(city):
     return  tem_day
   
   def get_day():
-    return datetime.now()
+    return datetime.now().day
 
 client = WeChatClient(app_id, app_secret)
 
