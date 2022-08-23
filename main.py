@@ -43,11 +43,28 @@ def get_words():
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
 
+def get_low(city):
+    url = "https://api.iyk0.com/tq/?city={}".format(city)  # 获取用户输入的城市进行查询
+    request = url
+    re = requests.get(request)
+    rep = re.json()
+    tem_night = rep.get('tem_night')
+    return  tem_night
+  
+def get_best(city):
+    url = "https://api.iyk0.com/tq/?city={}".format(city)  # 获取用户输入的城市进行查询
+    request = url
+    re = requests.get(request)
+    rep = re.json()
+    tem_day = rep.get('tem_day')
+    return  tem_day
+def get_day
+    return datetime.now()
 
 client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 wea, temperature = get_weather()
-data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"words":{"value":get_words(), "color":get_random_color()}}
+data = {"weather":{"value":wea},"temperature":{"value":temperature},"date":{"value":get_day},"love_days":{"value":get_count()},"highest":{"value":get_best()},"lowest":{"value":get_low()},"birthday_left":{"value":get_birthday()},"words":{"value":get_words(), "color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
